@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday, Mama! 🎉 | 15 August</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b1022;
+            --ink: #eaf0ff;
+            --muted: #a9b2d9;
+            --line: #22306b;
+            --accent: #6ac3ff;
+            --brand1: #ff8f1f;
+            --brand2: #ffffff;
+            --brand3: #1bbf72;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background:
+                radial-gradient(1000px 500px at -10% -10%, #12204f 0%, transparent 60%),
+                radial-gradient(1200px 700px at 110% -20%, #101c46 0%, transparent 60%),
+                var(--bg);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== EFFECT CANVASES: STAY BEHIND CONTENT ===== */
+        #fireworks,
+        #balloons,
+        #confetti {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        #fireworks {
+            z-index: 0;
+            opacity: .28;
+        }
+
+        /* BACKGROUND only */
+        #balloons {
+            z-index: 1;
+            opacity: .55;
+        }
+
+        #confetti {
+            z-index: 2;
+            opacity: .65;
+        }
+
+        /* Everything else sits ABOVE effects */
+        .page {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Top tricolor ribbon */
+        .tri {
+            position: fixed;
+            inset: 0 0 auto 0;
+            height: 8px;
+            z-index: 9999;
+            background: linear-gradient(90deg, var(--brand1) 0 33.33%, var(--brand2) 33.33% 66.66%, var(--brand3) 66.66% 100%);
+            filter: drop-shadow(0 2px 6px #0007);
+        }
+
+        .wrap {
+            width: min(1200px, 92%);
+            margin-inline: auto
+        }
+
+        .section {
+            padding: 86px 0
+        }
+
+        /* Sticky nav (no <header>) */
+        .topbar {
+            position: sticky;
+            top: 12px;
+            z-index: 50
+        }
+
+        .nav {
+            backdrop-filter: blur(10px);
+            background: #0b133acc;
+            border: 1px solid #1e2a63;
+            border-radius: 18px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .chakra {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 3px solid #6ac3ff;
+            position: relative;
+            box-shadow: 0 0 0 3px #0a1330 inset
+        }
+
+        .chakra::before {
+            content: "";
+            position: absolute;
+            inset: 4px;
+            border: 2px dashed #6ac3ff;
+            border-radius: 999px;
+            animation: spin 8s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid #22305c;
+            background: #0f1742;
+            color: #dce6ff;
+            font-size: 12px
+        }
+
+        .barlinks {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .barlinks a {
+            color: #eaf0ff;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid #22305c;
+            background: #0f1742;
+            font-weight: 600;
+            font-size: 14px
+        }
+
+        .barlinks a:hover {
+            background: #16225d
+        }
+
+        .barlinks a.active {
+            outline: 2px solid #6ac3ff55
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: 1px solid #2a356a;
+            background: #111a4b;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            transition: .25s transform ease, .25s background ease
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: #16225d
+        }
+
+        /* HERO (big intro; no header tag) */
+        .hero {
+            position: relative;
+            padding: 120px 0 70px;
+            overflow: hidden
+        }
+
+        .title {
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.05;
+            font-weight: 800
+        }
+
+        .vibes {
+            font-family: "Great Vibes", cursive;
+            font-size: clamp(30px, 5vw, 56px);
+            color: #ffd166
+        }
+
+        .subtitle {
+            color: var(--muted)
+        }
+
+        .heroRow {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 24px;
+            align-items: center
+        }
+
+        .frame {
+            position: relative;
+            width: min(340px, 80vw);
+            margin: auto;
+            aspect-ratio: 1/1;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 6px solid #fff3;
+            box-shadow: 0 20px 60px #0007
+        }
+
+        .frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.06);
+            filter: saturate(1.08) contrast(1.05)
+        }
+
+        .ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            pointer-events: none;
+            box-shadow: 0 0 0 3px #6ac3ff55 inset, 0 0 50px #6ac3ff33 inset;
+            animation: glow 2.2s ease-in-out infinite alternate
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 0 3px #6ac3ff55 inset, 0 0 20px #6ac3ff22 inset
+            }
+
+            to {
+                box-shadow: 0 0 0 3px #ffd16655 inset, 0 0 50px #ffd16633 inset
+            }
+        }
+
+        .float {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            opacity: .6
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-16px)
+            }
+        }
+
+        /* Countdowns */
+        .countgrid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(80px, 1fr));
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .box {
+            background: #0f1847;
+            border: 1px solid #263269;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center
+        }
+
+        .num {
+            font-weight: 800;
+            font-size: clamp(24px, 4.5vw, 40px)
+        }
+
+        .lbl {
+            font-size: 12px;
+            color: #9fb1ef
+        }
+
+        /* Cards */
+        .grid {
+            display: grid;
+            gap: 20px
+        }
+
+        .cards {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))
+        }
+
+        .card {
+            background: linear-gradient(180deg, #0f1640 0%, #0a1133 100%);
+            border: 1px solid #1d275e;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .card h3 {
+            margin: 0 0 6px
+        }
+
+        .card p {
+            margin: 0;
+            color: #c8d3ff
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, #fff2, transparent 30%, #fff2 60%, transparent);
+            transform: translateX(-120%)
+        }
+
+        .card:hover::after {
+            animation: shine 1s ease
+        }
+
+        @keyframes shine {
+            to {
+                transform: translateX(120%)
+            }
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid #1d275e;
+            background: #0f1640
+        }
+
+        .slides {
+            display: flex;
+            transition: transform .6s ease
+        }
+
+        .quote {
+            min-width: 100%;
+            padding: 26px;
+            color: #dfe6ff
+        }
+
+        .qtxt {
+            font-size: 18px
+        }
+
+        .qwho {
+            color: #9fb1ef;
+            font-size: 13px
+        }
+
+        /* Wish wall */
+        .wishwall {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 14px
+        }
+
+        .wish {
+            padding: 14px;
+            background: #0e1540;
+            border: 1px solid #223060;
+            border-radius: 14px
+        }
+
+        .wish .who {
+            font-weight: 700
+        }
+
+        .wish .text {
+            color: #cbd6ff
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid #21305e;
+            transition: transform .3s ease
+        }
+
+        .gallery img:hover {
+            transform: translateY(-3px)
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 24px 0
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #233
+        }
+
+        .t {
+            position: relative;
+            padding-left: 44px;
+            margin: 18px 0
+        }
+
+        .dot {
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #6ac3ff;
+            box-shadow: 0 0 0 4px #0c153a
+        }
+
+        /* Gift */
+        .gift {
+            padding: 24px;
+            text-align: center;
+            background: #0f1640;
+            border: 1px solid #1d275e;
+            border-radius: 18px
+        }
+
+        .end {
+            padding: 40px 0;
+            text-align: center;
+            color: #aeb9ef
+        }
+
+        @media (max-width: 820px) {
+            .heroRow {
+                grid-template-columns: 1fr
+            }
+
+            .countgrid {
+                grid-template-columns: repeat(2, minmax(80px, 1fr))
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Effects (behind everything) -->
+    <canvas id="fireworks"></canvas>
+    <canvas id="balloons"></canvas>
+    <canvas id="confetti"></canvas>
+
+    <div class="tri"></div>
+
+    <!-- PAGE CONTENT -->
+    <div class="page">
+
+        <!-- Sticky nav (no header tag used) -->
+        <div class="topbar wrap section" style="padding-top:20px;padding-bottom:10px">
+            <div class="nav">
+                <div class="brand">
+                    <div class="chakra"></div>
+                    <div>
+                        <div class="chip">15 August • Birthday</div>
+                        <strong id="brandName">Happy Birthda Mama!</strong>
+                    </div>
+                </div>
+                <div class="barlinks" id="navLinks">
+                    <a href="#home">Home</a>
+                    <a href="#count">Countdown</a>
+                    <a href="#wishes">Wishes</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#moments">Moments</a>
+                    <a href="#gift">Gift</a>
+                    <a href="#end">Thanks</a>
+                </div>
+                <button id="toggleFX" class="btn" title="Toggle Effects">FX On/Off</button>
+            </div>
+        </div>
+
+        <!-- HERO AREA -->
+        <div id="home" class="hero section">
+            <div class="wrap heroRow">
+                <div>
+                    <span class="chip">Special Day</span>
+                    <div class="title" style="margin-top:10px">Happy Birthday <span id="nameFancy"
+                            class="vibes">Mama</span> 🎂</div>
+                    <p class="subtitle">Lots of love, good health and endless joy. Your kindness and guidance mean the
+                        world. Today we celebrate <strong>you</strong>! ✨</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px">
+                        <a class="btn" href="#count">See Countdown ⏳</a>
+                        <button class="btn" id="playMusic">Play Music ▶️</button>
+                        <button class="btn" id="blast">Confetti 🎉</button>
+                    </div>
+                    <div class="countgrid" style="margin-top:22px">
+                        <div class="box">
+                            <div class="num" id="d">00</div>
+                            <div class="lbl">Days</div>
+                        </div>
+                        <div class="box">
+                            <div class="num" id="h">00</div>
+                            <div class="lbl">Hours</div>
+                        </div>
+                        <div class="box">
+                            <div class="num" id="m">00</div>
+                            <div class="lbl">Minutes</div>
+                        </div>
+                        <div class="box">
+                            <div class="num" id="s">00</div>
+                            <div class="lbl">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position:relative; display:grid; place-items:center">
+                    <div class="frame">
+                        <img src="pic7.jpg" alt="Mama Photo" />
+                        <div class="ring"></div>
+                    </div>
+                    <!-- <img class="float" style="left:-10px; top:-20px; width:70px" src="https://images.unsplash.com/photo-1515548211994-826887b89e8f?q=80&w=400&auto=format&fit=crop" alt="balloon"/> -->
+                    <!-- <img class="float" style="right:-16px; top:10px; width:90px; animation-delay:1s" src="https://images.unsplash.com/photo-1541199249251-f713e6145474?q=80&w=400&auto=format&fit=crop" alt="balloon"/> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- CARDS -->
+        <div class="section">
+            <div class="wrap grid cards">
+                <div class="card">
+                    <h3>To Our Rockstar</h3>
+                    <p>You inspire us every day with your hard work and heart. Keep shining, keep smiling!</p>
+                </div>
+                <div class="card">
+                    <h3>Wish for the Year</h3>
+                    <p>May this year bring new adventures, peace, and success in everything you do.</p>
+                </div>
+                <div class="card">
+                    <h3>Double Celebration</h3>
+                    <p>15 August — your birthday + Independence Day. Double joy, double pride!</p>
+                </div>
+                <div class="card">
+                    <h3>Small Surprise</h3>
+                    <p>Scroll till the end for a sweet digital gift we prepared for you 🎁</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COUNTDOWN -->
+        <div id="count" class="section">
+            <div class="wrap grid" style="grid-template-columns: 1.15fr .85fr; align-items:center">
+                <div>
+                    <h2>Countdown to 15 August 🕰️</h2>
+                    <p class="subtitle">We are counting down to midnight for the big day! (Asia/Kolkata)</p>
+                    <div class="countgrid">
+                        <div class="box">
+                            <div class="num" id="d2">00</div>
+                            <div class="lbl">Days</div>
+                        </div>
+                        <div class="box">
+                            <div class="num" id="h2">00</div>
+                            <div class="lbl">Hours</div>
+                        </div>
+                        <div class="box">
+                            <div class="num" id="m2">00</div>
+                            <div class="lbl">Minutes</div>
+                        </div>
+                        <div class="box">
+                            <div class="num" id="s2">00</div>
+                            <div class="lbl">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0">About Today</h3>
+                    <p>15 August is extra special — it's your birthday and India's Independence Day. Double celebration,
+                        double happiness!🎉</p>
+                    <p style="margin-top:10px">PS: We'll keep the vibe respectful and full of joy 💚</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTES -->
+        <div class="section">
+            <div class="wrap">
+                <div class="carousel" id="carousel">
+                    <div class="slides" id="slides">
+                        <div class="quote">
+                            <div class="qtxt">“Your guidance lights up our lives like fireworks in the sky.”</div>
+                            <div class="qwho">— With love, Family</div>
+                        </div>
+                        <div class="quote">
+                            <div class="qtxt">“May every step this year bring you peace, health and success.”</div>
+                            <div class="qwho">— Your bhagna </div>
+                        </div>
+                        <div class="quote">
+                            <div class="qtxt">“Proud to celebrate you on a proud day for the nation.”</div>
+                            <div class="qwho">— Jai Hind 💚</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:10px; margin-top:10px">
+                    <button class="btn" id="prev">◀️ Prev</button>
+                    <button class="btn" id="next">Next ▶️</button>
+                    <span class="chip">Auto rotates every 5s</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- WISH WALL -->
+        <div id="wishes" class="section">
+            <div class="wrap">
+                <h2>Wishes Wall 💌</h2>
+                <p class="subtitle">Add your message —</p>
+                <form id="wishForm" class="grid" style="grid-template-columns: 1fr 2fr auto; gap:10px">
+                    <input class="card" style="padding:12px; color:#fff" type="text" id="wishWho"
+                        placeholder="Your name" required>
+                    <input class="card" style="padding:12px; color:#fff" type="text" id="wishText"
+                        placeholder="Your birthday wish..." required>
+                    <button class="btn" type="submit">Post ✍️</button>
+                </form>
+                <div id="wishList" class="wishwall" style="margin-top:18px"></div>
+            </div>
+        </div>
+
+        <!-- GALLERY -->
+        <div id="gallery" class="section">
+            <div class="wrap">
+                <h2>Photo Gallery 📸</h2>
+                <p class="subtitle">Your image shows from local file <strong>pic.jpg</strong>. Others use online images
+                    (work in VS Code browser).</p>
+                <div class="gallery">
+                    <img src="pic.jpg" alt="Mama" />
+                    <img src="pic1.jpg" />
+                    <img src="pic7.jpg" />
+                    <img src="pic3.jpg" />
+                    <img src="pic6.jpg" />
+                    <img src="pic5.jpg" alt="Flag" />
+                </div>
+            </div>
+        </div>
+
+        <!-- MOMENTS -->
+        <div id="moments" class="section">
+            <div class="wrap">
+                <h2>Lovely Moments ⏳</h2>
+                <div class="timeline">
+                    <div class="t">
+                        <div class="dot"></div>
+                        <h3>Early Memories</h3>
+                        <p class="subtitle">From laughter to life lessons — you were always there.</p>
+                    </div>
+                    <div class="t">
+                        <div class="dot" style="background:#f472b6"></div>
+                        <h3>Family First</h3>
+                        <p class="subtitle">Your support keeps our family strong and smiling.</p>
+                    </div>
+                    <div class="t">
+                        <div class="dot" style="background:#a78bfa"></div>
+                        <h3>Proud Milestones</h3>
+                        <p class="subtitle">New achievements and constant growth — so proud of you!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GIFT -->
+        <div id="gift" class="section">
+            <div class="wrap">
+                <h2>Digital Gift 🎁</h2>
+                <p class="subtitle">A little keepsake — your personalized birthday certificate. Click to download.</p>
+                <div id="cert" class="gift">
+                    <div style="font-size:14px; letter-spacing:2px; color:#9fc2ff">Certificate of Celebration</div>
+                    <div style="font-family:'Great Vibes', cursive; font-size:44px; margin:8px 0" id="certName">Dear
+                        Mama</div>
+                    <div style="color:#cfe1ff; max-width:720px; margin-inline:auto">
+                        In honor of your birthday on <strong>15 August</strong>, we celebrate your kindness, wisdom, and
+                        the joy you bring to our lives.
+                    </div>
+                    <div style="margin-top:12px; font-size:12px; color:#9aa3c1">— With love from your family —</div>
+                    <svg viewBox="0 0 600 40" width="100%" style="margin-top:16px">
+                        <defs>
+                            <linearGradient id="tri" x1="0" x2="1">
+                                <stop stop-color="#ff8f1f" />
+                                <stop offset=".5" stop-color="#fafafa" />
+                                <stop offset="1" stop-color="#1bbf72" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M0 20 Q 150 0 300 20 T 600 20" fill="none" stroke="url(#tri)" stroke-width="6" />
+                    </svg>
+                    <button class="btn" id="downloadCert" style="margin-top:12px">Download PNG ⬇️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- END -->
+        <div id="end" class="end section" style="padding-top:30px">
+            <div class="wrap">
+                Made with ❤️ for <span id="footName">Mama</span>. Enjoy your day!
+            </div>
+        </div>
+
+    </div><!-- /.page -->
+
+    <!-- Audio -->
+    <audio id="music" preload="none">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+        /* Personalize */
+        const MAMA_NAME = 'Gopinath Jana';
+        const TARGET_DATE_ISO = '2025-08-15T00:00:00+05:30';
+        document.getElementById('nameFancy').textContent = MAMA_NAME || 'Mama';
+        document.getElementById('brandName').textContent = `Happy Birthday, ${MAMA_NAME || 'Mama'}!`;
+        document.getElementById('certName').textContent = `Dear ${MAMA_NAME || 'Mama'}`;
+        document.getElementById('footName').textContent = MAMA_NAME || 'Mama';
+
+        /* Active link on scroll */
+        const navLinks = [...document.querySelectorAll('#navLinks a')];
+        const sections = navLinks.map(a => document.querySelector(a.getAttribute('href')));
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+                }
+            });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+        sections.forEach(s => s && obs.observe(s));
+
+        /* Music */
+        const music = document.getElementById('music');
+        document.getElementById('playMusic').addEventListener('click', async () => {
+            try { await music.play(); } catch (e) { alert('Autoplay blocked. Tap Play again.'); }
+        });
+
+        /* EFFECTS CANVASES */
+        const F = document.getElementById('fireworks'), B = document.getElementById('balloons'), C = document.getElementById('confetti');
+        const gf = F.getContext('2d'), gb = B.getContext('2d'), gc = C.getContext('2d');
+        function resize() { [F, B, C].forEach(x => { x.width = innerWidth; x.height = innerHeight; }); }
+        addEventListener('resize', resize); resize();
+
+        // Fireworks — softened so it won't overpower content
+        let sparks = [];
+        function burst(x = innerWidth / 2, y = innerHeight * 0.35) {
+            for (let i = 0; i < 110; i++) {
+                const a = Math.random() * Math.PI * 2, sp = 2 + Math.random() * 3.5;
+                sparks.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, life: 70 + Math.random() * 30 });
+            }
+        }
+        function drawFireworks() {
+            gf.globalCompositeOperation = 'lighter';
+            gf.fillStyle = 'rgba(0,0,0,0.10)'; // light trail fade
+            gf.fillRect(0, 0, F.width, F.height);
+            sparks = sparks.filter(s => s.life > 0);
+            for (const s of sparks) {
+                s.x += s.vx; s.y += s.vy; s.vy += 0.02; s.life -= 1;
+                const a = Math.max(0, s.life / 120);
+                gf.beginPath(); gf.arc(s.x, s.y, 1.8, 0, 6.283);
+                gf.fillStyle = `rgba(${130 + Math.random() * 120 | 0},${150 + Math.random() * 105 | 0},255,${0.55 * a})`;
+                gf.fill();
+            }
+            requestAnimationFrame(drawFireworks);
+        }
+        drawFireworks();
+
+        // Balloons
+        let blns = [];
+        function launchBalloons() {
+            for (let i = 0; i < 18; i++) {
+                blns.push({ x: Math.random() * innerWidth, y: innerHeight + Math.random() * 200, vy: 0.8 + Math.random() * 1.2, sway: Math.random() * 1.2, r: 16 + Math.random() * 12, h: 0 });
+            }
+        }
+        function drawBalloons() {
+            gb.clearRect(0, 0, B.width, B.height);
+            gb.lineWidth = 2; gb.strokeStyle = '#fff4';
+            blns.forEach(b => {
+                b.y -= b.vy; b.h += 0.02; b.x += Math.sin(b.h) * b.sway;
+                if (b.y < -50) { b.y = innerHeight + 50; b.x = Math.random() * innerWidth }
+                gb.beginPath(); gb.moveTo(b.x, b.y); gb.lineTo(b.x, b.y + b.r * 2); gb.stroke();
+                gb.beginPath(); gb.ellipse(b.x, b.y, b.r * 0.8, b.r, 0, 0, Math.PI * 2);
+                gb.fillStyle = ['#3aa7ff', '#ffd166', '#1bbf72', '#f472b6', '#a78bfa'][b.r | 0 % 5];
+                gb.fill();
+            });
+            requestAnimationFrame(drawBalloons);
+        }
+        launchBalloons(); drawBalloons();
+
+        // Confetti
+        let confettiParts = [];
+        function makeConfetti(n = 200) {
+            for (let i = 0; i < n; i++) {
+                confettiParts.push({ x: Math.random() * innerWidth, y: -20 - Math.random() * innerHeight, s: 4 + Math.random() * 6, v: 1 + Math.random() * 3, r: Math.random() * Math.PI });
+            }
+        }
+        function drawConfetti() {
+            gc.clearRect(0, 0, C.width, C.height);
+            confettiParts.forEach(p => {
+                p.y += p.v; p.x += Math.sin(p.y * 0.02) * 0.9; p.r += 0.05;
+                if (p.y > innerHeight + 30) { p.y = -20; }
+                gc.save(); gc.translate(p.x, p.y); gc.rotate(p.r);
+                gc.fillStyle = ['#ff8f1f', '#1bbf72', '#3aa7ff', '#ffd166', '#f472b6'][p.s | 0 % 5];
+                gc.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * 1.8);
+                gc.restore();
+            });
+            requestAnimationFrame(drawConfetti);
+        }
+        drawConfetti();
+
+        // Celebrate on load and on button
+        document.getElementById('blast').addEventListener('click', () => { makeConfetti(180); burst(); });
+        setTimeout(() => { makeConfetti(140); burst(innerWidth * 0.25, innerHeight * 0.38); burst(innerWidth * 0.75, innerHeight * 0.42); }, 900);
+
+        // FX toggle (hide/show all effects quickly)
+        const toggle = document.getElementById('toggleFX');
+        let fxOn = true;
+        toggle.addEventListener('click', () => {
+            fxOn = !fxOn;
+            [F, B, C].forEach(el => el.style.display = fxOn ? 'block' : 'none');
+        });
+
+        // Countdowns (mirrored)
+        const target = new Date(TARGET_DATE_ISO);
+        let celebrated = false;
+        const ids1 = { d: 'd', h: 'h', m: 'm', s: 's' }, ids2 = { d: 'd2', h: 'h2', m: 'm2', s: 's2' };
+        function setNums(ids, d, h, m, s) {
+            document.getElementById(ids.d).textContent = String(d).padStart(2, '0');
+            document.getElementById(ids.h).textContent = String(h).padStart(2, '0');
+            document.getElementById(ids.m).textContent = String(m).padStart(2, '0');
+            document.getElementById(ids.s).textContent = String(s).padStart(2, '0');
+        }
+        function tick() {
+            const now = new Date();
+            let diff = Math.max(0, target - now);
+            const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+            const h = Math.floor(diff / 3600000); diff -= h * 3600000;
+            const m = Math.floor(diff / 60000); diff -= m * 60000;
+            const s = Math.floor(diff / 1000);
+            setNums(ids1, d, h, m, s); setNums(ids2, d, h, m, s);
+            if (!celebrated && target - now <= 0) { celebrated = true; burst(innerWidth * .5, innerHeight * .35); makeConfetti(350); music.play().catch(() => { }); }
+        }
+        tick(); setInterval(tick, 1000);
+
+        // Quotes carousel
+        const slides = document.getElementById('slides'); let idx = 0, total = slides.children.length;
+        function go(i) { idx = (i + total) % total; slides.style.transform = `translateX(-${idx * 100}%)`; }
+        document.getElementById('prev').addEventListener('click', () => go(idx - 1));
+        document.getElementById('next').addEventListener('click', () => go(idx + 1));
+        setInterval(() => go(idx + 1), 5000);
+
+        // Wishes (localStorage)
+        const KEY = 'mama-wishes-v1', wishForm = document.getElementById('wishForm'), wishList = document.getElementById('wishList');
+        function loadW() { try { return JSON.parse(localStorage.getItem(KEY) || '[]') } catch (e) { return [] } }
+        function saveW(list) { localStorage.setItem(KEY, JSON.stringify(list)); }
+        function renderW() { const list = loadW(); wishList.innerHTML = list.map(w => `<div class="wish"><div class="who">${w.who}</div><div class="text">${w.text}</div></div>`).join(''); }
+        wishForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const who = document.getElementById('wishWho').value.trim() || 'Someone';
+            const text = document.getElementById('wishText').value.trim(); if (!text) return;
+            const list = loadW(); list.unshift({ who, text }); saveW(list); renderW(); wishForm.reset(); makeConfetti(120);
+        });
+        renderW();
+
+        // Certificate download
+        function downloadCert() {
+            const node = document.getElementById('cert'), r = node.getBoundingClientRect();
+            const c = document.createElement('canvas'); c.width = Math.round(r.width * 2); c.height = Math.round(r.height * 2);
+            const g = c.getContext('2d'); g.scale(2, 2);
+            g.fillStyle = '#0f1640'; g.fillRect(0, 0, r.width, r.height);
+            g.strokeStyle = '#1d275e'; g.strokeRect(8, 8, r.width - 16, r.height - 16);
+            g.fillStyle = '#9fc2ff'; g.font = '14px Poppins'; g.fillText('Certificate of Celebration', 24, 34);
+            g.fillStyle = '#ffd166'; g.font = '44px Great Vibes'; g.fillText(`Dear ${MAMA_NAME || 'Mama'}`, 24, 86);
+            g.fillStyle = '#cfe1ff'; g.font = '14px Poppins';
+            const msg = 'In honor of your birthday on 15 August, we celebrate your kindness, wisdom, and the joy you bring to our lives.';
+            wrapText(g, msg, 24, 116, r.width - 48, 20);
+            g.fillStyle = '#9aa3c1'; g.font = '12px Poppins'; g.fillText('— With love from your family —', 24, 160);
+            const grad = g.createLinearGradient(0, 0, r.width, 0); grad.addColorStop(0, '#ff8f1f'); grad.addColorStop(.5, '#ffffff'); grad.addColorStop(1, '#1bbf72');
+            g.strokeStyle = grad; g.lineWidth = 6; g.beginPath(); g.moveTo(0, r.height - 40); g.quadraticCurveTo(r.width / 2, r.height - 60, r.width, r.height - 40); g.stroke();
+            const a = document.createElement('a'); a.download = `Happy-Birthday-${(MAMA_NAME || 'Mama').replace(/\s+/g, '-')}.png`; a.href = c.toDataURL(); a.click();
+        }
+        function wrapText(ctx, text, x, y, maxW, lh) {
+            const words = text.split(' '); let line = '';
+            for (let n = 0; n < words.length; n++) {
+                const t = line + words[n] + ' ';
+                if (ctx.measureText(t).width > maxW) { ctx.fillText(line, x, y); line = words[n] + ' '; y += lh; }
+                else line = t;
+            }
+            ctx.fillText(line, x, y);
+        }
+        document.getElementById('downloadCert').addEventListener('click', downloadCert);
+
+        // Manual confetti button (again, for safety after cert)
+        document.getElementById('blast').addEventListener('click', () => { makeConfetti(180); burst(); });
+    </script>
+</body>
+
+</html>
